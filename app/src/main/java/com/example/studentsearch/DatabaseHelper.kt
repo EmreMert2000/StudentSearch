@@ -2,6 +2,7 @@ package com.example.studentsearch
 
 // DatabaseHelper.kt
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -30,4 +31,41 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
+
+    fun insertData(studentName: String, studentNumber: String, studentScore: Int): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COLUMN_NAME,studentName)
+        contentValues.put(COLUMN_NUMBER,studentNumber)
+        contentValues.put(COLUMN_SCORE,studentScore)
+
+        val result = db.insert(TABLE_NAME, null, contentValues)
+        db.close()
+
+        // Ekleme işleminin başarılı olup olmadığını kontrol edin ve sonucu döndürün
+        return result != -1L
+    }
+    //I will do it later...
+    fun selectData(): List<String> {
+        val db = this.readableDatabase
+        val columns = arrayOf(COLUMN_NAME, COLUMN_NUMBER, COLUMN_SCORE)
+        val cursor = db.query(TABLE_NAME, columns, null, null, null, null, null)
+
+        val data = mutableListOf<String>()
+
+        while (cursor.moveToNext()) {
+            val name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
+            val number = cursor.getString(cursor.getColumnIndex(COLUMN_NUMBER))
+            val score = cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE))
+
+            val studentInfo = "Name: $name, Number: $number, Score: $score"
+            data.add(studentInfo)
+        }
+
+        cursor.close()
+        db.close()
+
+        return data
+
+
 }

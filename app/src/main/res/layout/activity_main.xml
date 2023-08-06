@@ -21,20 +21,20 @@
 
     <!-- Textboxes -->
     <EditText
+        android:id="@+id/TextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Enter Student Name"
-        android:id="@+id/TextName"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
+        android:textSize="18sp" />
 
     <EditText
+        android:id="@+id/TextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Enter Student ID"
-        android:id="@+id/TextID"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
+        android:textSize="18sp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -51,6 +51,17 @@
         android:id="@+id/ButtonSearch"
         android:text="Search"
         android:textSize="18sp" />
+    <!-- Textview -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Student"
+        android:id="@+id/textData"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
+
 
 
 </LinearLayout>
