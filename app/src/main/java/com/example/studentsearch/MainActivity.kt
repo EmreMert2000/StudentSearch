@@ -1,7 +1,10 @@
 package com.example.studentsearch
 
+import android.R
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.studentsearch.databinding.ActivityMainBinding
 
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.ButtonSearch.setOnClickListener {
             addStudentToDatabase()
+            showData()
         }
     }
 
@@ -43,15 +47,14 @@ class MainActivity : AppCompatActivity() {
             // Hata yönetimi için gerekli işlemleri yapabilirsiniz
         }
     }
-    private fun showData() {
-        val dbHelper = DatabaseHelper(this)
-        val studentData = dbHelper.selectData()
 
-        val stringBuilder = StringBuilder()
-        for (info in studentData) {
-            stringBuilder.append(info).append("\n")
-        }
+    //I will do it later this is showing data place...
+   private fun showData()
+    {
+        val databaseHelper = DatabaseHelper(this)
+        val dataList = databaseHelper.getAllData()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, dataList)
+        binding.listView.adapter = adapter
+   }
 
-        binding.textData.text = stringBuilder.toString()
-    }
 }

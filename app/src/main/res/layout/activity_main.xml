@@ -51,16 +51,16 @@
         android:id="@+id/ButtonSearch"
         android:text="Search"
         android:textSize="18sp" />
-    <!-- Textview -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Student"
-        android:id="@+id/textData"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+    <!-- Listview -->
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        /> <!-- Gerekirse butona göre konumunu ayarlayın -->
+
 
 
 
